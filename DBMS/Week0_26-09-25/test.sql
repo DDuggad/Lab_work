@@ -1,0 +1,3 @@
+use mysql;
+GRANT ALL PRIVILEGES ON *.* TO "divyansh";
+FLUSH PRIVILEGES;
