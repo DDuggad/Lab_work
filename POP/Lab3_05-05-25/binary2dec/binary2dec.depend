@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1746437282 source:c:\users\student\desktop\divyansh\pop\lab2_05-05-25\binary2dec\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
