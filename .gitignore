@@ -81,8 +81,13 @@ Desktop.ini
 temp/
 tmp/
 *.tmp
-1BF24CS102.rar
-FWD.rar
+
+# Archive files
+*.rar
+*.zip
+*.7z
+*.tar
+*.gz
 
 # Cache
 .cache/
