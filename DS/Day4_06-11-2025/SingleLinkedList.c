@@ -63,17 +63,45 @@ void display() {
     printf("NULL\n");
 }
 
+void swap(int pos1, int pos2) {
+    if (pos1 == pos2) return;
+
+    struct Node *arr1 = head;
+    for (int i = 1; arr1 != NULL && i < pos1; i++) {
+        arr1 = arr1->next;
+    }
+
+    struct Node *arr2 = head;
+    for (int i = 1; arr2 != NULL && i < pos2; i++) {
+        arr2 = arr2->next;
+    }
+
+    if (arr1 == NULL || arr2 == NULL) {
+        printf("Any of the position is invalid.\n");
+        return;
+    }
+    int a = arr1->data, b = arr2->data;
+    arr1->data = b;
+    arr2->data = a;
+    printf("Swapped nodes at positions %d and %d.\n", pos1, pos2);
+    return;
+}
+
 int main() {
     printf("List: ");
     display();
 
-    printf("Inserting 10 at beginning.\n30 at end.\n5 at beginning.\n20 at position 3.\n40 at invalid position 99.\n");
+    printf("\nInserting 10 at beginning.\n30 at end.\n5 at beginning.\n20 at position 3.\n40 at invalid position 99.\n");
     in_b(10);
     in_e(30);
     in_b(5);
     in_p(20,3);
     in_p(40,99);
-    printf("List: \n");
+    printf("\nList: \n");
+    display();
+    printf("\n\n");
+    swap(2,4);
+    printf("List after swapping: \n");
     display();
 
     return 0;
