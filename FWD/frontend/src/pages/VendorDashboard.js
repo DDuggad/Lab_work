@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 
 const VendorDashboard = () => {
   const [deals, setDeals] = useState([]);
@@ -25,7 +25,7 @@ const VendorDashboard = () => {
   const fetchVendorDeals = async () => {
     try {
       // In real app, filter by vendor ID from JWT token
-      const response = await axios.get('/api/deals');
+      const response = await api.get('/api/deals');
       setDeals(response.data);
       setLoading(false);
     } catch (error) {
@@ -60,7 +60,7 @@ const VendorDashboard = () => {
         }
       };
 
-      await axios.post('/api/deals', dealData);
+      await api.post('/api/deals', dealData);
       alert('Deal created successfully!');
       setShowForm(false);
       setFormData({

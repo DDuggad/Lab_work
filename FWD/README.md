@@ -1,424 +1,846 @@
-# 🍽️ FreshBites - Reduce Food Waste, Grow Your Business# 🍽️ FreshBites - Food Waste Reduction Platform# 🍽️ FreshBites - Food Waste Reduction Platform
+# 🍽️ FreshBite - Food Waste Reduction Platform# 🍽️ FreshBites - Reduce Food Waste, Grow Your Business# 🍽️ FreshBites - Food Waste Reduction Platform# 🍽️ FreshBites - Food Waste Reduction Platform
 
 
 
-## Overview
+[![MERN Stack](https://img.shields.io/badge/Stack-MERN-green.svg)](https://github.com/facebook/create-react-app)
 
-FreshBites is a platform connecting Pure Veg food vendors with customers in Bangalore to reduce food waste by offering surplus food at discounted prices. Vendors can turn their surplus inventory into profit while contributing to sustainability.
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB%20Atlas-brightgreen.svg)](https://www.mongodb.com/)
 
-> **A modern, minimal MERN stack application connecting local food businesses with consumers to reduce food waste while providing affordable meal options in Bangalore, India.**[![MERN Stack](https://img.shields.io/badge/Stack-MERN-green.svg)](https://github.com/facebook/create-react-app)
+[![Node.js](https://img.shields.io/badge/Runtime-Node.js-green.svg)](https://nodejs.org/)## Overview
 
-## ✨ Key Features
+[![React](https://img.shields.io/badge/Frontend-React-blue.svg)](https://reactjs.org/)
 
-[![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen.svg)](https://www.mongodb.com/)
-
-### For Vendors
-
-- 🏪 Easy vendor registration and profile management## ✨ Features[![Node.js](https://img.shields.io/badge/Runtime-Node.js-green.svg)](https://nodejs.org/)
-
-- 📝 Create and manage daily deals
-
-- 💰 Set discounted prices for surplus food[![React](https://img.shields.io/badge/Frontend-React-blue.svg)](https://reactjs.org/)
-
-- 📊 Real-time stock management
-
-- 📞 Direct customer communication- 🌈 **Modern UI** with glassmorphism design and smooth animations[![Express.js](https://img.shields.io/badge/Backend-Express.js-lightgrey.svg)](https://expressjs.com/)
-
-- 🗺️ Google Maps integration for location
-
-- 🎯 **Browse Deals** from 15+ Bangalore restaurants [![Docker](https://img.shields.io/badge/Deployment-Docker-blue.svg)](https://www.docker.com/)
-
-### For Customers
-
-- 🔍 Browse active deals from Pure Veg restaurants- 💰 **INR Pricing** with ₹ symbol throughout
-
-- 💚 Get discounts on quality surplus food
-
-- ⏰ View pickup times and availability- 🥗 **Jain Food Options** clearly marked> **A production-ready MERN stack application connecting local food businesses with consumers to reduce food waste while providing affordable meal options in Bangalore, India.**
-
-- 📍 Easy restaurant location access
-
-- 🌱 Contribute to reducing food waste- 📍 **Location-based** deals across Bangalore
+[![Express.js](https://img.shields.io/badge/Backend-Express.js-lightgrey.svg)](https://expressjs.com/)FreshBites is a platform connecting Pure Veg food vendors with customers in Bangalore to reduce food waste by offering surplus food at discounted prices. Vendors can turn their surplus inventory into profit while contributing to sustainability.
 
 
 
-## 🛠️ Tech Stack- 👤 **User Authentication** with JWT## 🌟 Features
+> **A modern MERN stack application connecting Pure Veg food vendors with customers in Bangalore to reduce food waste while providing affordable meal options.**> **A modern, minimal MERN stack application connecting local food businesses with consumers to reduce food waste while providing affordable meal options in Bangalore, India.**[![MERN Stack](https://img.shields.io/badge/Stack-MERN-green.svg)](https://github.com/facebook/create-react-app)
 
 
 
-**Frontend:**- 🏪 **Vendor Dashboard** for deal management
-
-- React 18.2.0
-
-- React Router 6.8.0### 🎨 **Production Optimizations**
-
-- Axios for API calls
-
-- Modern CSS with responsive design## 🛠️ Tech Stack- ⚡ **Performance**: Gzip compression, caching, code splitting
+---## ✨ Key Features
 
 
 
-**Backend:**- 🔒 **Security**: Helmet.js headers, rate limiting, CORS protection
-
-- Node.js with Express
-
-- MongoDB with Mongoose- **Frontend**: React.js with modern CSS- 🐳 **Docker Ready**: Complete containerization with nginx load balancer
-
-- JWT Authentication
-
-- bcryptjs for password encryption- **Backend**: Node.js + Express.js- 📊 **Monitoring**: Health checks, error boundaries, comprehensive logging
+## 📖 Table of Contents[![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen.svg)](https://www.mongodb.com/)
 
 
 
-## 📋 Prerequisites- **Database**: MongoDB + Mongoose- 🚀 **Deployment**: One-command production deployment with Docker Compose
+- [Overview](#-overview)### For Vendors
+
+- [Features](#-features)
+
+- [Tech Stack](#-tech-stack)- 🏪 Easy vendor registration and profile management## ✨ Features[![Node.js](https://img.shields.io/badge/Runtime-Node.js-green.svg)](https://nodejs.org/)
+
+- [Project Structure](#-project-structure)
+
+- [Quick Start (Local Development)](#-quick-start-local-development)- 📝 Create and manage daily deals
+
+- [Deployment Guide](#-deployment-guide)
+
+  - [MongoDB Atlas Setup](#1-mongodb-atlas-setup)- 💰 Set discounted prices for surplus food[![React](https://img.shields.io/badge/Frontend-React-blue.svg)](https://reactjs.org/)
+
+  - [Railway Backend Deployment](#2-railway-backend-deployment)
+
+  - [Vercel Frontend Deployment](#3-vercel-frontend-deployment)- 📊 Real-time stock management
+
+- [Environment Variables](#-environment-variables)
+
+- [Seeding Database](#-seeding-database)- 📞 Direct customer communication- 🌈 **Modern UI** with glassmorphism design and smooth animations[![Express.js](https://img.shields.io/badge/Backend-Express.js-lightgrey.svg)](https://expressjs.com/)
+
+- [API Endpoints](#-api-endpoints)
+
+- [License](#-license)- 🗺️ Google Maps integration for location
 
 
 
-Before you begin, ensure you have the following installed:- **Authentication**: JWT
+---- 🎯 **Browse Deals** from 15+ Bangalore restaurants [![Docker](https://img.shields.io/badge/Deployment-Docker-blue.svg)](https://www.docker.com/)
 
-- **Node.js** (v14 or higher) - [Download](https://nodejs.org/)
 
-- **MongoDB** (running locally or MongoDB Atlas account) - [Download](https://www.mongodb.com/try/download/community)### For Consumers
+
+## 🌟 Overview### For Customers
+
+
+
+**FreshBite** is a platform that helps Pure Veg restaurants in Bangalore reduce food waste by connecting them with customers looking for affordable, quality meals. Vendors can list surplus food at discounted prices, and customers can discover and purchase these deals, creating a win-win situation for sustainability and affordability.- 🔍 Browse active deals from Pure Veg restaurants- 💰 **INR Pricing** with ₹ symbol throughout
+
+
+
+### Key Benefits:- 💚 Get discounts on quality surplus food
+
+- 🌍 **Reduce Food Waste** - Help restaurants minimize waste
+
+- 💰 **Save Money** - Get quality food at discounted prices- ⏰ View pickup times and availability- 🥗 **Jain Food Options** clearly marked> **A production-ready MERN stack application connecting local food businesses with consumers to reduce food waste while providing affordable meal options in Bangalore, India.**
+
+- 🏪 **Support Local Businesses** - Help vendors turn surplus into profit
+
+- 🌱 **Sustainability** - Contribute to environmental conservation- 📍 Easy restaurant location access
+
+
+
+---- 🌱 Contribute to reducing food waste- 📍 **Location-based** deals across Bangalore
+
+
+
+## ✨ Features
+
+
+
+### For Customers:## 🛠️ Tech Stack- 👤 **User Authentication** with JWT## 🌟 Features
+
+- 🔍 Browse real-time deals from 15+ Bangalore Pure Veg restaurants
+
+- 🏷️ Filter deals by location, cuisine type, price
+
+- 📱 Modern, responsive UI with glassmorphism design
+
+- 🗺️ Google Maps integration for restaurant locations**Frontend:**- 🏪 **Vendor Dashboard** for deal management
+
+- ⭐ View restaurant ratings and reviews
+
+- 🛒 Quick deal claiming system- React 18.2.0
+
+
+
+### For Vendors:- React Router 6.8.0### 🎨 **Production Optimizations**
+
+- 🏪 Easy vendor registration and profile management
+
+- 📝 Create and manage daily deals- Axios for API calls
+
+- 💰 Set discounted prices for surplus food
+
+- 📊 Real-time stock management- Modern CSS with responsive design## 🛠️ Tech Stack- ⚡ **Performance**: Gzip compression, caching, code splitting
+
+- 📞 Direct customer communication
+
+- 🎯 Track deal performance
+
+
+
+---**Backend:**- 🔒 **Security**: Helmet.js headers, rate limiting, CORS protection
+
+
+
+## 🛠️ Tech Stack- Node.js with Express
+
+
+
+### Frontend- MongoDB with Mongoose- **Frontend**: React.js with modern CSS- 🐳 **Docker Ready**: Complete containerization with nginx load balancer
+
+- **React 18** - UI library
+
+- **React Router v6** - Client-side routing- JWT Authentication
+
+- **Axios** - HTTP client
+
+- **CSS3** - Modern styling with glassmorphism effects- bcryptjs for password encryption- **Backend**: Node.js + Express.js- 📊 **Monitoring**: Health checks, error boundaries, comprehensive logging
+
+
+
+### Backend
+
+- **Node.js** - Runtime environment
+
+- **Express.js** - Web framework## 📋 Prerequisites- **Database**: MongoDB + Mongoose- 🚀 **Deployment**: One-command production deployment with Docker Compose
+
+- **MongoDB** - NoSQL database
+
+- **Mongoose** - ODM for MongoDB
+
+- **JWT** - Authentication
+
+- **bcryptjs** - Password hashingBefore you begin, ensure you have the following installed:- **Authentication**: JWT
+
+
+
+### Deployment- **Node.js** (v14 or higher) - [Download](https://nodejs.org/)
+
+- **Vercel** - Frontend hosting
+
+- **Railway** - Backend hosting- **MongoDB** (running locally or MongoDB Atlas account) - [Download](https://www.mongodb.com/try/download/community)### For Consumers
+
+- **MongoDB Atlas** - Cloud database
 
 - **npm** (comes with Node.js)
 
+---
+
 ## 🚀 Quick Start- 🌈 **Beautiful Homepage** with hero section and smooth animations
+
+## 📁 Project Structure
 
 ## 🚀 Installation & Setup
 
-- 🎯 **Browse Deals** from 15+ famous Bangalore restaurants 
-
-### Step 1: Clone the Repository
-
-```bash### Prerequisites- 💰 **Proper INR Pricing** with ₹ symbol throughout
-
-git clone <repository-url>
-
-cd FreshBites-main- Node.js (v18+)- 🥗 **Jain Food Options** clearly marked with green indicators
-
 ```
 
-- MongoDB- 📍 **Location-based** deals across Bangalore localities
+FreshBite/- 🎯 **Browse Deals** from 15+ famous Bangalore restaurants 
 
-### Step 2: Install Dependencies
+├── frontend/                # React frontend application
 
-```bash- npm- ⏰ **Real-time** pickup time slots and availability
+│   ├── src/### Step 1: Clone the Repository
 
-# Install all dependencies (root, frontend, and backend)
+│   │   ├── components/      # Reusable UI components
 
-npm run install-all- 👤 **User Authentication** with secure JWT-based sessions
+│   │   ├── contexts/        # React Context (Auth)```bash### Prerequisites- 💰 **Proper INR Pricing** with ₹ symbol throughout
 
-```
+│   │   ├── pages/           # Page components
 
-### Installation- 🛡️ **Error Handling** with graceful error boundaries and loading states
+│   │   ├── styles/          # CSS filesgit clone <repository-url>
 
-### Step 3: Configure MongoDB Connection
+│   │   ├── utils/           # Utility functions
 
+│   │   └── App.jscd FreshBites-main- Node.js (v18+)- 🥗 **Jain Food Options** clearly marked with green indicators
 
+│   ├── package.json
 
-**Option A: Local MongoDB**
+│   └── .env.example```
 
-- Ensure MongoDB is running on `mongodb://localhost:27017/freshbites`1. **Clone and install**### For Vendors  
+│
 
-- Default configuration is already set in `backend/server.js`
+├── backend/                 # Express backend API- MongoDB- 📍 **Location-based** deals across Bangalore localities
 
-   ```bash- 🏪 **Vendor Dashboard** for complete deal management
+│   ├── models/              # Mongoose schemas
 
-**Option B: MongoDB Atlas (Cloud)**
+│   ├── routes/              # API routes### Step 2: Install Dependencies
 
-1. Create a `.env` file in the `backend` directory:   git clone <your-repo>- ➕ **Create Deals** with images, pricing, and details
+│   ├── server.js            # Express server entry point
 
-```
+│   ├── seedData.js          # Database seeding script```bash- npm- ⏰ **Real-time** pickup time slots and availability
 
-MONGODB_URI=your_mongodb_atlas_connection_string   cd FreshBites-main- 📊 **Track Performance** with real-time analytics
+│   ├── package.json
 
-JWT_SECRET=your_secure_jwt_secret_here
+│   └── .env.example# Install all dependencies (root, frontend, and backend)
 
-PORT=5000   npm run install-all- 🍽️ **Food Categories** across 5 cuisine types
+│
 
-```
+├── vercel.json              # Vercel configurationnpm run install-all- 👤 **User Authentication** with secure JWT-based sessions
 
-   ```- 🟢 **Jain Options** specification for inclusive dining
+├── railway.toml             # Railway configuration
 
-### Step 4: Seed the Database with Sample Data
-
-- ⏰ **Flexible Timing** for pickup windows
-
-**On Windows (PowerShell):**
-
-```powershell2. **Environment Setup**
-
-.\seed.bat
-
-```   ```bash## 🛠️ Tech Stack
-
-
-
-**On Linux/Mac (Bash):**   # Backend environment
-
-```bash
-
-chmod +x seed.sh   cd backend| Component | Technology | Purpose |
-
-./seed.sh
-
-```   cp .env.example .env|-----------|------------|---------|
-
-
-
-**Alternative (from backend directory):**   # Edit .env with your MongoDB URI| **Frontend** | React.js | User interface with error boundaries |
-
-```bash
-
-cd backend   ```| **Backend** | Node.js + Express.js | RESTful API with security middleware |
-
-npm run seed
-
-```| **Database** | MongoDB + Mongoose | Data storage with connection pooling |
-
-
-
-This will populate your database with:3. **Start Development**| **Authentication** | JWT | Secure user sessions |
-
-- **18 Pure Veg restaurants** in Bangalore
-
-- **36 sample deals** with various food items   ```bash| **Security** | Helmet.js + Rate Limiting | Production-grade security |
-
-- All vendors with password: `vendor123`
-
-   npm run dev| **Deployment** | Docker + Docker Compose | Containerized deployment |
-
-### Step 5: Start the Application
-
-   ```| **Load Balancer** | Nginx | Reverse proxy with SSL termination |
-
-**From the root directory:**
-
-```bash| **Styling** | Pure CSS | Responsive design with animations |
-
-npm run dev
-
-```   - Backend: http://localhost:5000| **Currency** | INR (₹) | Indian Rupee formatting |
-
-
-
-This command will concurrently start:   - Frontend: http://localhost:3000
-
-- ✅ Backend server on `http://localhost:5000`
-
-- ✅ Frontend development server on `http://localhost:3000`## 🚀 Quick Start
-
-
-
-Your browser should automatically open to `http://localhost:3000`## 📁 Project Structure
-
-
-
-## 🔑 Sample Login Credentials### Prerequisites
-
-
-
-After seeding the database, you can login with any of these vendor accounts:```- **Node.js** (v18.0.0 or higher)
-
-
-
-**Email Format:** `[restaurant-name]@freshbites.com`FreshBites/- **MongoDB** (v7.0 or higher) or MongoDB Atlas
-
-**Password:** `vendor123` (for all accounts)
-
-├── backend/                    # Node.js API- **Docker & Docker Compose** (for production deployment)
-
-**Example Logins:**
-
-- Email: `mtr@freshbites.com` | Password: `vendor123`│   ├── models/                # MongoDB schemas- **npm** package manager
-
-- Email: `sagar@freshbites.com` | Password: `vendor123`
-
-- Email: `mavalli-tiffin@freshbites.com` | Password: `vendor123`│   ├── routes/                # API endpoints
-
-
-
-**Complete Vendor List (18 Restaurants):**│   ├── server.js              # Main server### Development Setup
-
-1. mtr@freshbites.com
-
-2. sagar@freshbites.com│   └── package.json           # Backend deps
-
-3. vasudev@freshbites.com
-
-4. mavalli-tiffin@freshbites.com├── frontend/                   # React app1. **Clone the repository**
-
-5. vidyarthi@freshbites.com
-
-6. brahmins@freshbites.com│   ├── src/                   # React source   ```bash
-
-7. shanthi@freshbites.com
-
-8. taaza-thindi@freshbites.com│   │   ├── components/        # UI components   git clone https://github.com/your-username/freshbites.git
-
-9. veena@freshbites.com
-
-10. annapoorna@freshbites.com│   │   ├── pages/            # Route pages   cd freshbites
-
-11. anand@freshbites.com
-
-12. udupi@freshbites.com│   │   └── index.css         # Modern CSS   ```
-
-13. karavalli@freshbites.com
-
-14. shivaji@freshbites.com│   └── package.json          # Frontend deps
-
-15. dasaprakash@freshbites.com
-
-16. koshy@freshbites.com└── package.json               # Root scripts2. **Install all dependencies**
-
-17. vidyarthi-bhavan@freshbites.com
-
-18. central@freshbites.com```   ```bash
-
-
-
-## 📁 Project Structure   npm run install-all
-
-
-
-```## 🎨 Design Features   ```
-
-FreshBites-main/
-
-├── frontend/                 # React frontend application
-
-│   ├── public/
-
-│   │   └── index.html- **Glassmorphism UI** with backdrop filters3. **Set up environment variables**
-
-│   ├── src/
-
-│   │   ├── components/      # Reusable components- **Gradient animations** and smooth transitions   
-
-│   │   │   ├── DealCard.js  # Deal display card
-
-│   │   │   ├── DealModal.js # Deal details modal- **Modern cards** with hover effects   Create `.env` file in `backend/` directory:
-
-│   │   │   ├── Header.js
-
-│   │   │   ├── ErrorBoundary.js- **Responsive design** for all devices   ```env
-
-│   │   │   ├── LoadingSpinner.js
-
-│   │   │   └── ProtectedRoute.js- **Contemporary color scheme** with vibrant gradients   MONGODB_URI=mongodb://localhost:27017/freshbites
-
-│   │   ├── contexts/        # React contexts
-
-│   │   │   └── AuthContext.js   JWT_SECRET=your_super_secret_jwt_key_here_min_32_chars
-
-│   │   ├── pages/          # Page components
-
-│   │   │   ├── HomePage.js## 📊 API Endpoints   NODE_ENV=development
-
-│   │   │   ├── DealsPage.js
-
-│   │   │   ├── DealDetailsPage.js   PORT=5000
-
-│   │   │   ├── LoginPage.js
-
-│   │   │   ├── RegisterPage.js| Method | Endpoint | Description |   ```
-
-│   │   │   ├── VendorDashboard.js
-
-│   │   │   ├── VendorProfile.js|--------|----------|-------------|
-
-│   │   │   ├── AddDeal.js
-
-│   │   │   └── ManageDeals.js| POST | `/api/auth/register` | User registration |4. **Start MongoDB service**
-
-│   │   ├── styles/         # CSS files
-
-│   │   ├── App.js| POST | `/api/auth/login` | User login |   ```bash
-
-│   │   └── index.js
-
-│   └── package.json| GET | `/api/deals` | Get all deals |   # On Windows
-
-├── backend/                 # Express backend application
-
-│   ├── models/| POST | `/api/deals` | Create deal (vendor) |   net start MongoDB
-
-│   │   ├── User.js         # Vendor user model
-
-│   │   └── Deal.js         # Deal model| GET | `/api/vendors/:id` | Get vendor profile |   
-
-│   ├── routes/
-
-│   │   ├── auth.js         # Authentication routes   # On macOS (with Homebrew)
-
-│   │   ├── deals.js        # Deal CRUD routes
-
-│   │   └── vendors.js      # Vendor profile routes## 🚀 Deployment   brew services start mongodb-community
-
-│   ├── seedData.js         # Database seeding script
-
-│   ├── server.js           # Express server setup   
-
-│   └── package.json
-
-├── seed.sh                 # Linux/Mac seeding scriptSimple deployment options:   # On Linux
-
-├── seed.bat                # Windows seeding script
-
-├── package.json            # Root package.json- **Backend**: Heroku, Railway, Render   sudo systemctl start mongod
+├── Procfile                 # Process file for deployment```
 
 └── README.md
 
-```- **Frontend**: Netlify, Vercel   ```
+```### Installation- 🛡️ **Error Handling** with graceful error boundaries and loading states
 
 
 
-## 🔄 Available Scripts- **Database**: MongoDB Atlas
+---### Step 3: Configure MongoDB Connection
 
 
 
-**Root Directory:**5. **Seed the database with sample data**
+## 🚀 Quick Start (Local Development)
 
-- `npm run install-all` - Install all dependencies
+
+
+### Prerequisites**Option A: Local MongoDB**
+
+- Node.js (v16 or higher)
+
+- MongoDB (local or Atlas)- Ensure MongoDB is running on `mongodb://localhost:27017/freshbites`1. **Clone and install**### For Vendors  
+
+- Git
+
+- Default configuration is already set in `backend/server.js`
+
+### 1. Clone the Repository
+
+```bash   ```bash- 🏪 **Vendor Dashboard** for complete deal management
+
+git clone https://github.com/yourusername/FreshBite.git
+
+cd FreshBite**Option B: MongoDB Atlas (Cloud)**
+
+```
+
+1. Create a `.env` file in the `backend` directory:   git clone <your-repo>- ➕ **Create Deals** with images, pricing, and details
+
+### 2. Backend Setup
+
+```bash```
+
+cd backend
+
+npm installMONGODB_URI=your_mongodb_atlas_connection_string   cd FreshBites-main- 📊 **Track Performance** with real-time analytics
+
+
+
+# Create .env fileJWT_SECRET=your_secure_jwt_secret_here
+
+cp .env.example .env
+
+```PORT=5000   npm run install-all- 🍽️ **Food Categories** across 5 cuisine types
+
+
+
+Edit `backend/.env`:```
+
+```env
+
+MONGODB_URI=mongodb://localhost:27017/freshbites   ```- 🟢 **Jain Options** specification for inclusive dining
+
+JWT_SECRET=your_super_secret_jwt_key_here
+
+PORT=5000### Step 4: Seed the Database with Sample Data
+
+NODE_ENV=development
+
+FRONTEND_URL=http://localhost:3000- ⏰ **Flexible Timing** for pickup windows
+
+```
+
+**On Windows (PowerShell):**
+
+### 3. Frontend Setup
+
+```bash```powershell2. **Environment Setup**
+
+cd ../frontend
+
+npm install.\seed.bat
+
+
+
+# Create .env file```   ```bash## 🛠️ Tech Stack
+
+cp .env.example .env
+
+```
+
+
+
+Edit `frontend/.env`:**On Linux/Mac (Bash):**   # Backend environment
+
+```env
+
+REACT_APP_API_URL=http://localhost:5000```bash
+
+```
+
+chmod +x seed.sh   cd backend| Component | Technology | Purpose |
+
+### 4. Seed Database (Optional but Recommended)
+
+```bash./seed.sh
+
+cd ../backend
+
+node seedData.js```   cp .env.example .env|-----------|------------|---------|
+
+```
+
+
+
+This will populate your database with 15+ sample restaurants and deals from Bangalore.
+
+**Alternative (from backend directory):**   # Edit .env with your MongoDB URI| **Frontend** | React.js | User interface with error boundaries |
+
+### 5. Run the Application
+
+```bash
+
+**Terminal 1 - Backend:**
+
+```bashcd backend   ```| **Backend** | Node.js + Express.js | RESTful API with security middleware |
+
+cd backend
+
+npm startnpm run seed
+
+# Server runs on http://localhost:5000
+
+``````| **Database** | MongoDB + Mongoose | Data storage with connection pooling |
+
+
+
+**Terminal 2 - Frontend:**
+
+```bash
+
+cd frontendThis will populate your database with:3. **Start Development**| **Authentication** | JWT | Secure user sessions |
+
+npm start
+
+# App opens at http://localhost:3000- **18 Pure Veg restaurants** in Bangalore
+
+```
+
+- **36 sample deals** with various food items   ```bash| **Security** | Helmet.js + Rate Limiting | Production-grade security |
+
+### 6. Test Login Credentials
+
+After seeding, you can login with any of these vendor accounts:- All vendors with password: `vendor123`
+
+- **Email:** mtr@freshbites.com | **Password:** vendor123
+
+- **Email:** vidyarthi@freshbites.com | **Password:** vendor123   npm run dev| **Deployment** | Docker + Docker Compose | Containerized deployment |
+
+- **Email:** brahmin@freshbites.com | **Password:** vendor123
+
+### Step 5: Start the Application
+
+---
+
+   ```| **Load Balancer** | Nginx | Reverse proxy with SSL termination |
+
+## 🌐 Deployment Guide
+
+**From the root directory:**
+
+### 1. MongoDB Atlas Setup
+
+```bash| **Styling** | Pure CSS | Responsive design with animations |
+
+#### Step 1: Create MongoDB Atlas Account
+
+1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)npm run dev
+
+2. Sign up for a free account
+
+3. Create a new cluster (Free M0 tier is sufficient)```   - Backend: http://localhost:5000| **Currency** | INR (₹) | Indian Rupee formatting |
+
+
+
+#### Step 2: Configure Database Access
+
+1. Go to **Database Access** → **Add New Database User**
+
+2. Create a user with username and passwordThis command will concurrently start:   - Frontend: http://localhost:3000
+
+3. Set privileges to "Read and write to any database"
+
+- ✅ Backend server on `http://localhost:5000`
+
+#### Step 3: Configure Network Access
+
+1. Go to **Network Access** → **Add IP Address**- ✅ Frontend development server on `http://localhost:3000`## 🚀 Quick Start
+
+2. Click **"Allow Access from Anywhere"** (0.0.0.0/0)
+
+3. Click **Confirm**
+
+
+
+#### Step 4: Get Connection StringYour browser should automatically open to `http://localhost:3000`## 📁 Project Structure
+
+1. Click **"Connect"** on your cluster
+
+2. Choose **"Connect your application"**
+
+3. Copy the connection string and add database name `freshbites`:
+
+   ```## 🔑 Sample Login Credentials### Prerequisites
+
+   mongodb+srv://user:pass@cluster0.xxxxx.mongodb.net/freshbites?retryWrites=true&w=majority
+
+   ```
+
+
+
+---After seeding the database, you can login with any of these vendor accounts:```- **Node.js** (v18.0.0 or higher)
+
+
+
+### 2. Railway Backend Deployment
+
+
+
+#### Step 1: Deploy to Railway**Email Format:** `[restaurant-name]@freshbites.com`FreshBites/- **MongoDB** (v7.0 or higher) or MongoDB Atlas
+
+1. Go to [Railway.app](https://railway.app/)
+
+2. Sign up with GitHub**Password:** `vendor123` (for all accounts)
+
+3. Click **"New Project"** → **"Deploy from GitHub repo"**
+
+4. Select your **FreshBite** repository├── backend/                    # Node.js API- **Docker & Docker Compose** (for production deployment)
+
+5. Click **"Deploy Now"**
+
+**Example Logins:**
+
+#### Step 2: Configure Environment Variables
+
+In Railway dashboard, go to **Variables** tab and add:- Email: `mtr@freshbites.com` | Password: `vendor123`│   ├── models/                # MongoDB schemas- **npm** package manager
+
+
+
+```env- Email: `sagar@freshbites.com` | Password: `vendor123`
+
+MONGODB_URI=mongodb+srv://user:pass@cluster0.xxxxx.mongodb.net/freshbites?retryWrites=true&w=majority
+
+JWT_SECRET=generate_a_random_secret_key_here_min_32_chars- Email: `mavalli-tiffin@freshbites.com` | Password: `vendor123`│   ├── routes/                # API endpoints
+
+PORT=5000
+
+NODE_ENV=production
+
+FRONTEND_URL=https://your-app.vercel.app
+
+```**Complete Vendor List (18 Restaurants):**│   ├── server.js              # Main server### Development Setup
+
+
+
+#### Step 3: Configure Build & Start Commands1. mtr@freshbites.com
+
+1. Go to **Settings** → **Build & Deploy**
+
+2. **Build Command:** `cd backend && npm install`2. sagar@freshbites.com│   └── package.json           # Backend deps
+
+3. **Start Command:** `cd backend && npm start`
+
+3. vasudev@freshbites.com
+
+#### Step 4: Get Railway URL
+
+1. Go to **Settings** → **Domains**4. mavalli-tiffin@freshbites.com├── frontend/                   # React app1. **Clone the repository**
+
+2. Click **"Generate Domain"**
+
+3. Copy the URL (e.g., `https://your-app.railway.app`)5. vidyarthi@freshbites.com
+
+
+
+#### Step 5: Seed Database6. brahmins@freshbites.com│   ├── src/                   # React source   ```bash
+
+From your local machine, temporarily set MongoDB URI in `backend/.env`:
+
+```bash7. shanthi@freshbites.com
+
+cd backend
+
+node seedData.js8. taaza-thindi@freshbites.com│   │   ├── components/        # UI components   git clone https://github.com/your-username/freshbites.git
+
+```
+
+9. veena@freshbites.com
+
+---
+
+10. annapoorna@freshbites.com│   │   ├── pages/            # Route pages   cd freshbites
+
+### 3. Vercel Frontend Deployment
+
+11. anand@freshbites.com
+
+#### Step 1: Deploy to Vercel
+
+1. Go to [Vercel](https://vercel.com/)12. udupi@freshbites.com│   │   └── index.css         # Modern CSS   ```
+
+2. Sign up with GitHub
+
+3. Click **"Add New Project"**13. karavalli@freshbites.com
+
+4. Import your **FreshBite** repository
+
+5. Configure project:14. shivaji@freshbites.com│   └── package.json          # Frontend deps
+
+   - **Framework Preset:** Create React App
+
+   - **Root Directory:** `frontend`15. dasaprakash@freshbites.com
+
+   - **Build Command:** `npm run build`
+
+   - **Output Directory:** `build`16. koshy@freshbites.com└── package.json               # Root scripts2. **Install all dependencies**
+
+
+
+#### Step 2: Add Environment Variables17. vidyarthi-bhavan@freshbites.com
+
+Go to **Settings** → **Environment Variables** and add:
+
+```env18. central@freshbites.com```   ```bash
+
+REACT_APP_API_URL=https://your-app.railway.app
+
+```
+
+
+
+#### Step 3: Deploy## 📁 Project Structure   npm run install-all
+
+Click **"Deploy"** and wait for completion.
+
+
+
+#### Step 4: Update Railway Frontend URL
+
+Go back to Railway and update `FRONTEND_URL` with your Vercel URL.```## 🎨 Design Features   ```
+
+
+
+---FreshBites-main/
+
+
+
+### 4. Verify Deployment├── frontend/                 # React frontend application
+
+
+
+**Test Backend:**│   ├── public/
+
+Visit: `https://your-app.railway.app/health`
+
+│   │   └── index.html- **Glassmorphism UI** with backdrop filters3. **Set up environment variables**
+
+Should return:
+
+```json│   ├── src/
+
+{
+
+  "status": "healthy",│   │   ├── components/      # Reusable components- **Gradient animations** and smooth transitions   
+
+  "mongodb": "connected"
+
+}│   │   │   ├── DealCard.js  # Deal display card
+
+```
+
+│   │   │   ├── DealModal.js # Deal details modal- **Modern cards** with hover effects   Create `.env` file in `backend/` directory:
+
+**Test Frontend:**
+
+Visit your Vercel URL and test login with: `mtr@freshbites.com` / `vendor123`│   │   │   ├── Header.js
+
+
+
+---│   │   │   ├── ErrorBoundary.js- **Responsive design** for all devices   ```env
+
+
+
+## 🔐 Environment Variables│   │   │   ├── LoadingSpinner.js
+
+
+
+### Backend (.env)│   │   │   └── ProtectedRoute.js- **Contemporary color scheme** with vibrant gradients   MONGODB_URI=mongodb://localhost:27017/freshbites
+
+```env
+
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/freshbites│   │   ├── contexts/        # React contexts
+
+JWT_SECRET=your_super_secret_jwt_key_min_32_characters
+
+PORT=5000│   │   │   └── AuthContext.js   JWT_SECRET=your_super_secret_jwt_key_here_min_32_chars
+
+NODE_ENV=production
+
+FRONTEND_URL=https://your-vercel-app.vercel.app│   │   ├── pages/          # Page components
+
+```
+
+│   │   │   ├── HomePage.js## 📊 API Endpoints   NODE_ENV=development
+
+### Frontend (.env)
+
+```env│   │   │   ├── DealsPage.js
+
+REACT_APP_API_URL=https://your-railway-app.railway.app
+
+```│   │   │   ├── DealDetailsPage.js   PORT=5000
+
+
+
+---│   │   │   ├── LoginPage.js
+
+
+
+## 🌱 Seeding Database│   │   │   ├── RegisterPage.js| Method | Endpoint | Description |   ```
+
+
+
+The seed script populates your database with 15+ sample Pure Veg restaurants and deals from Bangalore.│   │   │   ├── VendorDashboard.js
+
+
+
+### Local Seeding:│   │   │   ├── VendorProfile.js|--------|----------|-------------|
+
+```bash
+
+cd backend│   │   │   ├── AddDeal.js
+
+node seedData.js
+
+```│   │   │   └── ManageDeals.js| POST | `/api/auth/register` | User registration |4. **Start MongoDB service**
+
+
+
+### Production Seeding:│   │   ├── styles/         # CSS files
+
+Set production MongoDB URI in `backend/.env`:
+
+```bash│   │   ├── App.js| POST | `/api/auth/login` | User login |   ```bash
+
+MONGODB_URI=mongodb+srv://...your-atlas-uri...
+
+cd backend│   │   └── index.js
+
+node seedData.js
+
+```│   └── package.json| GET | `/api/deals` | Get all deals |   # On Windows
+
+
+
+### Sample Data Includes:├── backend/                 # Express backend application
+
+- 15+ Pure Veg restaurants (MTR, Vidyarthi Bhavan, CTR, etc.)
+
+- 50+ food deals with various cuisines│   ├── models/| POST | `/api/deals` | Create deal (vendor) |   net start MongoDB
+
+- Pre-configured vendor accounts
+
+- Authentic Bangalore locations│   │   ├── User.js         # Vendor user model
+
+
+
+---│   │   └── Deal.js         # Deal model| GET | `/api/vendors/:id` | Get vendor profile |   
+
+
+
+## 📡 API Endpoints│   ├── routes/
+
+
+
+### Authentication│   │   ├── auth.js         # Authentication routes   # On macOS (with Homebrew)
+
+- `POST /api/auth/register` - Register new vendor
+
+- `POST /api/auth/login` - Login user│   │   ├── deals.js        # Deal CRUD routes
+
+- `PUT /api/auth/profile` - Update vendor profile
+
+│   │   └── vendors.js      # Vendor profile routes## 🚀 Deployment   brew services start mongodb-community
+
+### Deals
+
+- `GET /api/deals` - Get all active deals│   ├── seedData.js         # Database seeding script
+
+- `GET /api/deals/:id` - Get deal by ID
+
+- `POST /api/deals` - Create new deal (vendor only)│   ├── server.js           # Express server setup   
+
+- `PUT /api/deals/:id` - Update deal (vendor only)
+
+- `DELETE /api/deals/:id` - Delete deal (vendor only)│   └── package.json
+
+- `GET /api/deals/vendor/:vendorId` - Get deals by vendor
+
+- `POST /api/deals/:id/claim` - Claim a deal├── seed.sh                 # Linux/Mac seeding scriptSimple deployment options:   # On Linux
+
+
+
+### Vendors├── seed.bat                # Windows seeding script
+
+- `GET /api/vendors` - Get all vendors
+
+- `GET /api/vendors/:id` - Get vendor by ID├── package.json            # Root package.json- **Backend**: Heroku, Railway, Render   sudo systemctl start mongod
+
+
+
+---└── README.md
+
+
+
+## 🔧 Troubleshooting```- **Frontend**: Netlify, Vercel   ```
+
+
+
+### Common Issues:
+
+
+
+**1. CORS Errors:**## 🔄 Available Scripts- **Database**: MongoDB Atlas
+
+- Ensure `FRONTEND_URL` in Railway matches your Vercel URL exactly
+
+- Check that `REACT_APP_API_URL` in Vercel matches Railway URL
+
+
+
+**2. MongoDB Connection Fails:****Root Directory:**5. **Seed the database with sample data**
+
+- Verify MongoDB Atlas IP whitelist includes 0.0.0.0/0
+
+- Check username/password in connection string- `npm run install-all` - Install all dependencies
+
+- Ensure database name is included in URI
 
 - `npm run dev` - Start both frontend and backend servers## 📄 License   ```bash
 
-- `npm run server` - Start only backend server
+**3. Build Fails on Vercel:**
+
+- Make sure Root Directory is set to `frontend`- `npm run server` - Start only backend server
+
+- Verify all dependencies are in `package.json`
 
 - `npm run client` - Start only frontend client   npm run seed
 
-- `npm run seed` - Seed database with sample data
+**4. API Calls Return 404:**
+
+- Verify `REACT_APP_API_URL` is set correctly- `npm run seed` - Seed database with sample data
+
+- Check Railway deployment logs
 
 MIT License   ```
 
+---
+
 **Frontend Directory:**
+
+## 🤝 Contributing
 
 - `npm start` - Start React development server
 
+Contributions are welcome! Please follow these steps:
+
 - `npm run build` - Create production build
 
-- `npm test` - Run tests---6. **Start the development servers**
+1. Fork the repository
 
+2. Create a feature branch: `git checkout -b feature/AmazingFeature`- `npm test` - Run tests---6. **Start the development servers**
 
+3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
+
+4. Push to the branch: `git push origin feature/AmazingFeature`
+
+5. Open a Pull Request
 
 **Backend Directory:**   ```bash
 
+---
+
 - `npm run dev` - Start server with nodemon (auto-reload)
+
+## 📄 License
 
 - `npm start` - Start server normally**Built with ❤️ for reducing food waste in Bangalore**   npm run dev
 
+This project is licensed under the MIT License.
+
 - `npm run seed` - Seed database   ```
 
+---
 
+
+
+## 🙏 Acknowledgments
 
 ## 🌐 API Endpoints   This starts:
 
-   - **Backend**: http://localhost:5000
+- Real restaurant data from Bangalore Pure Veg establishments
+
+- MERN Stack community   - **Backend**: http://localhost:5000
+
+- MongoDB Atlas, Railway, and Vercel for hosting
 
 ### Authentication   - **Frontend**: http://localhost:3000
 
+---
+
 - `POST /api/auth/register` - Register new vendor
+
+**Made with ❤️ for a sustainable future**
 
 - `POST /api/auth/login` - Vendor login## 📁 Project Structure
 

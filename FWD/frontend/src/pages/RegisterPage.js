@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import '../styles/theme.css';
 
 const RegisterPage = () => {
@@ -28,7 +28,7 @@ const RegisterPage = () => {
     setError('');
 
     try {
-      const response = await axios.post('/api/auth/register', formData);
+      const response = await api.post('/api/auth/register', formData);
       
       // Use AuthContext login method to set user state
       login(response.data.user, response.data.token);
@@ -104,7 +104,7 @@ const RegisterPage = () => {
             type="submit" 
             className="btn btn-primary btn-large"
             disabled={loading}
-            style={{ width: '100%' }}
+            style={{ width: '100%', marginTop: '1.5rem' }}
           >
             {loading ? <><span className="spinner"></span> Registering...</> : 'Register as Vendor'}
           </button>

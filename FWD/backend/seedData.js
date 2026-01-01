@@ -9,8 +9,15 @@ dotenv.config();
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/freshbites');
+    const mongoURI = process.env.MONGODB_URI;
+    if (!mongoURI) {
+      console.error('❌ MONGODB_URI not found in environment variables');
+      console.log('Please set MONGODB_URI in .env file');
+      process.exit(1);
+    }
+    await mongoose.connect(mongoURI);
     console.log('✅ MongoDB Connected for seeding');
+    console.log('📊 Database:', mongoose.connection.name);
   } catch (error) {
     console.error('❌ MongoDB connection error:', error);
     process.exit(1);
@@ -275,81 +282,81 @@ const createDealsForVendor = (vendor) => {
 
   const dealTemplates = {
     'MTR (Mavalli Tiffin Room)': [
-      { item: 'Rava Idli Combo', original: 120, new: 80, stock: 30, type: 'South Indian', slot: getTimeSlot(16, 18) },
-      { item: 'Masala Dosa Set', original: 150, new: 100, stock: 25, type: 'South Indian', slot: getTimeSlot(18, 20) }
+      { item: 'Rava Idli Combo', original: 120, new: 80, stock: 30, type: 'South Indian', slot: getTimeSlot(16, 18), image: 'https://images.unsplash.com/photo-1630383249896-424e482df921?w=600' },
+      { item: 'Masala Dosa Set', original: 150, new: 100, stock: 25, type: 'South Indian', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600' }
     ],
     'Vidyarthi Bhavan': [
-      { item: 'Benne Masala Dosa', original: 85, new: 60, stock: 40, type: 'South Indian', slot: getTimeSlot(16, 18) },
-      { item: 'Set Dosa with Chutney', original: 70, new: 50, stock: 35, type: 'South Indian', slot: getTimeSlot(17, 19) }
+      { item: 'Benne Masala Dosa', original: 85, new: 60, stock: 40, type: 'South Indian', slot: getTimeSlot(16, 18), image: 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600' },
+      { item: 'Set Dosa with Chutney', original: 70, new: 50, stock: 35, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1694672227584-14b831d10632?w=600' }
     ],
     "Brahmins' Thatte Idli": [
-      { item: 'Thatte Idli (3 pcs)', original: 60, new: 40, stock: 50, type: 'South Indian', slot: getTimeSlot(16, 18) },
-      { item: 'Idli Vada Combo', original: 80, new: 55, stock: 40, type: 'South Indian', slot: getTimeSlot(17, 19) }
+      { item: 'Thatte Idli (3 pcs)', original: 60, new: 40, stock: 50, type: 'South Indian', slot: getTimeSlot(16, 18), image: 'https://images.unsplash.com/photo-1630383249896-424e482df921?w=600' },
+      { item: 'Idli Vada Combo', original: 80, new: 55, stock: 40, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600' }
     ],
     'Maiyas Restaurant': [
-      { item: 'Veg Thali', original: 200, new: 140, stock: 20, type: 'Pure Veg', slot: getTimeSlot(18, 20) },
-      { item: 'North Indian Meal', original: 180, new: 130, stock: 25, type: 'North Indian', slot: getTimeSlot(19, 21) }
+      { item: 'Veg Thali', original: 200, new: 140, stock: 20, type: 'Pure Veg', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600' },
+      { item: 'North Indian Meal', original: 180, new: 130, stock: 25, type: 'North Indian', slot: getTimeSlot(19, 21), image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600' }
     ],
     'Upahara Darshini': [
-      { item: 'Pongal Special', original: 65, new: 45, stock: 35, type: 'South Indian', slot: getTimeSlot(16, 18) },
-      { item: 'Mini Meals', original: 90, new: 65, stock: 30, type: 'Pure Veg', slot: getTimeSlot(18, 20) }
+      { item: 'Pongal Special', original: 65, new: 45, stock: 35, type: 'South Indian', slot: getTimeSlot(16, 18), image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600' },
+      { item: 'Mini Meals', original: 90, new: 65, stock: 30, type: 'Pure Veg', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600' }
     ],
     'Vegarama': [
-      { item: 'Paneer Butter Masala Meal', original: 180, new: 130, stock: 25, type: 'North Indian', slot: getTimeSlot(18, 20) },
-      { item: 'South Indian Thali', original: 150, new: 110, stock: 30, type: 'South Indian', slot: getTimeSlot(17, 19) }
+      { item: 'Paneer Butter Masala Meal', original: 180, new: 130, stock: 25, type: 'North Indian', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600' },
+      { item: 'South Indian Thali', original: 150, new: 110, stock: 30, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=600' }
     ],
     'Nandhini Deluxe': [
-      { item: 'Veg Pulao Combo', original: 140, new: 100, stock: 28, type: 'Pure Veg', slot: getTimeSlot(18, 20) },
-      { item: 'Paneer Fried Rice', original: 160, new: 115, stock: 25, type: 'Chinese', slot: getTimeSlot(19, 21) }
+      { item: 'Veg Pulao Combo', original: 140, new: 100, stock: 28, type: 'Pure Veg', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600' },
+      { item: 'Paneer Fried Rice', original: 160, new: 115, stock: 25, type: 'Chinese', slot: getTimeSlot(19, 21), image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600' }
     ],
     'Sagar Ratna': [
-      { item: 'Paper Roast Dosa', original: 95, new: 70, stock: 35, type: 'South Indian', slot: getTimeSlot(16, 18) },
-      { item: 'Mini Uttapam Set', original: 85, new: 60, stock: 30, type: 'South Indian', slot: getTimeSlot(17, 19) }
+      { item: 'Paper Roast Dosa', original: 95, new: 70, stock: 35, type: 'South Indian', slot: getTimeSlot(16, 18), image: 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600' },
+      { item: 'Mini Uttapam Set', original: 85, new: 60, stock: 30, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600' }
     ],
     'Sri Sagar (CTR)': [
-      { item: 'Filter Coffee + Vada', original: 50, new: 35, stock: 45, type: 'South Indian', slot: getTimeSlot(16, 18) },
-      { item: 'Bisibelebath', original: 75, new: 55, stock: 35, type: 'South Indian', slot: getTimeSlot(17, 19) }
+      { item: 'Filter Coffee + Vada', original: 50, new: 35, stock: 45, type: 'South Indian', slot: getTimeSlot(16, 18), image: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=600' },
+      { item: 'Bisibelebath', original: 75, new: 55, stock: 35, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=600' }
     ],
     'Veg Palace': [
-      { item: 'Chinese Combo', original: 170, new: 120, stock: 22, type: 'Chinese', slot: getTimeSlot(18, 20) },
-      { item: 'Veg Manchurian Meal', original: 150, new: 110, stock: 25, type: 'Chinese', slot: getTimeSlot(19, 21) }
+      { item: 'Chinese Combo', original: 170, new: 120, stock: 22, type: 'Chinese', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600' },
+      { item: 'Veg Manchurian Meal', original: 150, new: 110, stock: 25, type: 'Chinese', slot: getTimeSlot(19, 21), image: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600' }
     ],
     'Rameshwaram Cafe': [
-      { item: 'Ghee Podi Dosa', original: 100, new: 70, stock: 40, type: 'South Indian', slot: getTimeSlot(16, 18) },
-      { item: 'Filter Coffee + Snacks', original: 60, new: 45, stock: 50, type: 'South Indian', slot: getTimeSlot(17, 19) }
+      { item: 'Ghee Podi Dosa', original: 100, new: 70, stock: 40, type: 'South Indian', slot: getTimeSlot(16, 18), image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600' },
+      { item: 'Filter Coffee + Snacks', original: 60, new: 45, stock: 50, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=600' }
     ],
     'CTR (Central Tiffin Room)': [
-      { item: 'Benne Dose', original: 80, new: 60, stock: 38, type: 'South Indian', slot: getTimeSlot(16, 18) },
-      { item: 'Khara Bath', original: 65, new: 48, stock: 35, type: 'South Indian', slot: getTimeSlot(17, 19) }
+      { item: 'Benne Dose', original: 80, new: 60, stock: 38, type: 'South Indian', slot: getTimeSlot(16, 18), image: 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600' },
+      { item: 'Khara Bath', original: 65, new: 48, stock: 35, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600' }
     ],
     'Kamat Hotel': [
-      { item: 'Veg Meals', original: 130, new: 95, stock: 30, type: 'Pure Veg', slot: getTimeSlot(18, 20) },
-      { item: 'Palak Paneer Combo', original: 155, new: 115, stock: 25, type: 'North Indian', slot: getTimeSlot(19, 21) }
+      { item: 'Veg Meals', original: 130, new: 95, stock: 30, type: 'Pure Veg', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600' },
+      { item: 'Palak Paneer Combo', original: 155, new: 115, stock: 25, type: 'North Indian', slot: getTimeSlot(19, 21), image: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600' }
     ],
     'Rasovara': [
-      { item: 'Organic Thali', original: 220, new: 160, stock: 18, type: 'Pure Veg', slot: getTimeSlot(18, 20) },
-      { item: 'Millet Dosa Set', original: 110, new: 80, stock: 25, type: 'South Indian', slot: getTimeSlot(17, 19) }
+      { item: 'Organic Thali', original: 220, new: 160, stock: 18, type: 'Pure Veg', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600' },
+      { item: 'Millet Dosa Set', original: 110, new: 80, stock: 25, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1694672227584-14b831d10632?w=600' }
     ],
     'The Green Theory': [
-      { item: 'Quinoa Buddha Bowl', original: 250, new: 180, stock: 15, type: 'Continental', slot: getTimeSlot(18, 20) },
-      { item: 'Vegan Pasta', original: 200, new: 145, stock: 20, type: 'Italian', slot: getTimeSlot(19, 21) }
+      { item: 'Quinoa Buddha Bowl', original: 250, new: 180, stock: 15, type: 'Continental', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600' },
+      { item: 'Vegan Pasta', original: 200, new: 145, stock: 20, type: 'Italian', slot: getTimeSlot(19, 21), image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600' }
     ],
     'Green Thaali': [
-      { item: 'Unlimited Thali', original: 190, new: 140, stock: 25, type: 'Pure Veg', slot: getTimeSlot(18, 20) },
-      { item: 'Mini Meals', original: 120, new: 90, stock: 30, type: 'Pure Veg', slot: getTimeSlot(17, 19) }
+      { item: 'Unlimited Thali', original: 190, new: 140, stock: 25, type: 'Pure Veg', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600' },
+      { item: 'Mini Meals', original: 120, new: 90, stock: 30, type: 'Pure Veg', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600' }
     ],
     'Onesta (Veg)': [
-      { item: 'Wood Fired Pizza', original: 280, new: 200, stock: 20, type: 'Italian', slot: getTimeSlot(18, 20) },
-      { item: 'Pasta Combo', original: 240, new: 175, stock: 22, type: 'Italian', slot: getTimeSlot(19, 21) }
+      { item: 'Wood Fired Pizza', original: 280, new: 200, stock: 20, type: 'Italian', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600' },
+      { item: 'Pasta Combo', original: 240, new: 175, stock: 22, type: 'Italian', slot: getTimeSlot(19, 21), image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600' }
     ],
     'Pure Veg Restaurant': [
-      { item: 'South Indian Combo', original: 100, new: 75, stock: 32, type: 'South Indian', slot: getTimeSlot(17, 19) },
-      { item: 'North Indian Meal', original: 140, new: 105, stock: 28, type: 'North Indian', slot: getTimeSlot(18, 20) }
+      { item: 'South Indian Combo', original: 100, new: 75, stock: 32, type: 'South Indian', slot: getTimeSlot(17, 19), image: 'https://images.unsplash.com/photo-1630383249896-424e482df921?w=600' },
+      { item: 'North Indian Meal', original: 140, new: 105, stock: 28, type: 'North Indian', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600' }
     ]
   };
 
   const templates = dealTemplates[vendor.restaurantName] || [
-    { item: 'Special Meal', original: 150, new: 100, stock: 25, type: 'Pure Veg', slot: getTimeSlot(18, 20) }
+    { item: 'Special Meal', original: 150, new: 100, stock: 25, type: 'Pure Veg', slot: getTimeSlot(18, 20), image: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600' }
   ];
 
   return templates.map(template => ({
@@ -362,7 +369,7 @@ const createDealsForVendor = (vendor) => {
     claimed: Math.floor(Math.random() * 5), // 0-4 already claimed
     dealStartTime: template.slot.start,
     dealEndTime: template.slot.end,
-    image: vendor.restaurantImage,
+    image: template.image,
     foodType: template.type,
     isActive: true,
     vendor: {

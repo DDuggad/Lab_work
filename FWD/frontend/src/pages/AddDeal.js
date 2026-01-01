@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import '../styles/AddDeal.css';
 
 const AddDeal = () => {
@@ -47,12 +47,12 @@ const AddDeal = () => {
           address: user.address,
           location: user.location,
           phoneNumber: user.phoneNumber,
-          googleMapsLocation: user.googleMapsLocation || '',
-          rating: user.rating || 0
+          googleMapsLocation: user.googleMapsLocation || `https://maps.google.com/?q=${encodeURIComponent(user.restaurantName + ' ' + user.location + ' Bangalore')}`,
+          rating: user.rating || 4.0
         }
       };
 
-      await axios.post('/api/deals', dealData, {
+      await api.post('/api/deals', dealData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

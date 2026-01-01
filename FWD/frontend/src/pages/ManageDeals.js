@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import '../styles/ManageDeals.css';
 
 const ManageDeals = () => {
@@ -31,7 +31,7 @@ const ManageDeals = () => {
       console.log('Fetching deals for user ID:', user.id);
       console.log('Token:', token ? 'Present' : 'Missing');
       
-      const response = await axios.get(`/api/deals/vendor/${user.id}`, {
+      const response = await api.get(`/api/deals/vendor/${user.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -50,7 +50,7 @@ const ManageDeals = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`/api/deals/${dealId}`, {
+      await api.delete(`/api/deals/${dealId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDeals(deals.filter(deal => deal._id !== dealId));
@@ -62,7 +62,7 @@ const ManageDeals = () => {
   const handleUpdateStock = async (dealId, newStock) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(
+      const response = await api.put(
         `/api/deals/${dealId}`,
         { stockAvailable: parseInt(newStock) },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -79,7 +79,7 @@ const ManageDeals = () => {
   const toggleDealStatus = async (dealId, currentStatus) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(
+      const response = await api.put(
         `/api/deals/${dealId}`,
         { isActive: !currentStatus },
         { headers: { Authorization: `Bearer ${token}` } }
