@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 const DealModal = ({ deal, isOpen, onClose }) => {
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && onClose) {
         onClose();
       }
     };
@@ -22,31 +22,36 @@ const DealModal = ({ deal, isOpen, onClose }) => {
   if (!isOpen || !deal) return null;
 
   const formatTime = (date) => {
-    return new Date(date).toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true
-    });
+    if (!date) return 'N/A';
+    try {
+      return new Date(date).toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      });
+    } catch (e) {
+      return 'N/A';
+    }
   };
 
   const calculateDiscount = () => {
     const original = deal.originalPrice || 0;
     const newP = deal.newPrice || 0;
-    if (!original || !newP) return 0;
+    if (!original || !newP || original <= newP) return 0;
     return Math.round(((original - newP) / original) * 100);
   };
 
   const getRemainingQuantity = () => {
-    return (deal.stockAvailable || 0) - (deal.claimed || 0);
+    return Math.max(0, (deal.stockAvailable || 0) - (deal.claimed || 0));
   };
 
   const openGoogleMaps = () => {
     if (deal.vendor?.googleMapsLocation) {
-      window.open(deal.vendor.googleMapsLocation, '_blank');
-    } else {
-      const location = `${deal.vendor?.restaurantName}, ${deal.vendor?.address}, ${deal.vendor?.location}, Bangalore`;
+      window.open(deal.vendor.googleMapsLocation, '_blank', 'noopener,noreferrer');
+    } else if (deal.vendor?.restaurantName && deal.vendor?.location) {
+      const location = `${deal.vendor.restaurantName}, ${deal.vendor.address || ''}, ${deal.vendor.location}, Bangalore`;
       const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
-      window.open(mapsUrl, '_blank');
+      window.open(mapsUrl, '_blank', 'noopener,noreferrer');
     }
   };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import '../styles/VendorProfile.css';
 import '../styles/theme.css';
 
@@ -46,7 +46,7 @@ const VendorProfile = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(
+      const response = await api.put(
         '/api/auth/profile',
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
@@ -174,7 +174,12 @@ const VendorProfile = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="googleMapsLocation">Google Maps Location URL</label>
+            <label htmlFor="googleMapsLocation">
+              Google Maps Location URL
+              <small style={{ display: 'block', color: '#6b7280', fontWeight: 'normal', marginTop: '0.25rem' }}>
+                Example: https://maps.google.com/?q=Your+Restaurant+Name+Location
+              </small>
+            </label>
             <input
               type="url"
               id="googleMapsLocation"
@@ -182,7 +187,9 @@ const VendorProfile = () => {
               value={formData.googleMapsLocation}
               onChange={handleChange}
               className="form-input"
-              placeholder="https://maps.google.com/..."
+              placeholder="https://maps.google.com/?q=Your+Restaurant+Bangalore"
+              pattern="https://maps\.google\.com/.*|https://www\.google\.com/maps/.*|https://goo\.gl/maps/.*"
+              title="Please enter a valid Google Maps URL (e.g., https://maps.google.com/?q=...)"
             />
           </div>
 

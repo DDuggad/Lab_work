@@ -1,41 +1,56 @@
 import React from 'react';
 
 const DealCard = ({ deal, onOpenModal }) => {
+  // Safety check for deal object
+  if (!deal) return null;
+
   const formatTime = (date) => {
-    return new Date(date).toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true
-    });
+    if (!date) return 'N/A';
+    try {
+      return new Date(date).toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      });
+    } catch (e) {
+      return 'N/A';
+    }
   };
 
   const calculateDiscount = () => {
     const original = deal.originalPrice || 0;
     const newP = deal.newPrice || 0;
-    if (!original || !newP) return 0;
+    if (!original || !newP || original <= newP) return 0;
     return Math.round(((original - newP) / original) * 100);
   };
 
   const getRemainingQuantity = () => {
-    return (deal.stockAvailable || 0) - (deal.claimed || 0);
+    return Math.max(0, (deal.stockAvailable || 0) - (deal.claimed || 0));
   };
 
   const handleImageError = (e) => {
     e.target.style.display = 'none';
-    e.target.nextSibling.style.display = 'flex';
+    const placeholder = e.target.nextSibling;
+    if (placeholder) {
+      placeholder.style.display = 'flex';
+    }
   };
 
   const handleCardClick = (e) => {
     if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a, button')) {
       return;
     }
-    onOpenModal(deal);
+    if (onOpenModal) {
+      onOpenModal(deal);
+    }
   };
 
   const handleImageClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    onOpenModal(deal);
+    if (onOpenModal) {
+      onOpenModal(deal);
+    }
   };
 
   const discountPercentage = calculateDiscount();
@@ -83,9 +98,9 @@ const DealCard = ({ deal, onOpenModal }) => {
         <div className="vendor-info-modern" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
           <div className="vendor-name" style={{ fontSize: '0.875rem', color: '#6b7280', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
             <span className="location-icon" style={{ color: '#10b981' }}>⚬</span>
-            {deal.vendor?.restaurantName} - {deal.vendor?.location}
+            {deal.vendor?.restaurantName || 'Unknown Vendor'} - {deal.vendor?.location || 'Location'}
           </div>
-          {deal.vendor?.rating > 0 && (
+          {deal.vendor?.rating && deal.vendor.rating > 0 && (
             <div className="vendor-rating" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.875rem', fontWeight: '600', color: '#064e3b' }}>
               <span className="star-icon" style={{ color: '#F59E0B' }}>★</span>
               {deal.vendor.rating.toFixed(1)}
@@ -118,14 +133,14 @@ const DealCard = ({ deal, onOpenModal }) => {
         {/* Food Type Badge */}
         <div className="food-type-container" style={{ marginBottom: '1rem' }}>
           <span className="food-type-badge" style={{ display: 'inline-block', padding: '0.375rem 0.875rem', background: '#dcfce7', color: '#166534', borderRadius: '20px', fontSize: '0.75rem', fontWeight: '600' }}>
-            {deal.foodType}
+            {deal.foodType || 'Vegetarian'}
           </span>
         </div>
 
         {/* Price Section */}
         <div className="price-section" style={{ borderTop: '1px solid #e5e7eb', paddingTop: '1rem' }}>
           <div className="price-info" style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span className="current-price" style={{ fontSize: '1.75rem', fontWeight: '800', color: '#10b981' }}>₹{deal.newPrice}</span>
+            <span className="current-price" style={{ fontSize: '1.75rem', fontWeight: '800', color: '#10b981' }}>₹{deal.newPrice || 0}</span>
             {deal.originalPrice && deal.originalPrice > deal.newPrice && (
               <span className="original-price" style={{ fontSize: '1.125rem', color: '#9ca3af', textDecoration: 'line-through' }}>₹{deal.originalPrice}</span>
             )}
