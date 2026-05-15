@@ -31,3 +31,14 @@ int main() {
 
     return 0;
 }
+
+/*Enter no. of System and User processes: 2 1
+System P1 BT: 5
+System P2 BT: 3
+User P1 BT: 4
+
+Type    P       BT      WT      TAT
+Sys     S1      5       0       5
+Sys     S2      3       5       8
+User    U1      4       8       12
+*/
