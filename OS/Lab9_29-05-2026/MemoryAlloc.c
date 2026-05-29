@@ -10,7 +10,7 @@ void firstFit(int b[], int nb, int p[], int np) {
         for (j = 0; j < nb; j++) {
             if (temp_b[j] >= p[i]) {
                 alloc[i] = j;
-                temp_b[j] -= p[i];
+                temp_b[j] = 0;
                 break;
             }
         }
@@ -36,7 +36,7 @@ void bestFit(int b[], int nb, int p[], int np) {
         }
         if (best != -1) {
             alloc[i] = best;
-            temp_b[best] -= p[i];
+            temp_b[best] = 0;
         }
     }
     printf("\nBest-Fit Allocation:\n");
@@ -60,7 +60,7 @@ void worstFit(int b[], int nb, int p[], int np) {
         }
         if (worst != -1) {
             alloc[i] = worst;
-            temp_b[worst] -= p[i];
+            temp_b[worst] = 0;
         }
     }
     printf("\nWorst-Fit Allocation:\n");
