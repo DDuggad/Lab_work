@@ -1,0 +1,24 @@
+import sys
+
+def solve():
+    data = sys.stdin.read().rstrip("\r\n")
+    if not data:
+        return
+    s = list(data)
+    vowels = set("aeiouAEIOU")
+    
+    unique_vowels = []
+    positions = []
+    
+    for i, ch in enumerate(s):
+        if ch in vowels and ch not in unique_vowels:
+            unique_vowels.append(ch)
+            positions.append(i)
+            
+    for pos, v in zip(positions, unique_vowels[::-1]):
+        s[pos] = v
+        
+    print("".join(s))
+
+if __name__ == "__main__":
+    solve()
