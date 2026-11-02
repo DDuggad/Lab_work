@@ -1,12 +1,9 @@
 import heapq
 
-initial = (2, 8, 3, 1, 6, 4, 7, 0, 5)
-goal = (1, 2, 3, 8, 0, 4, 7, 6, 5)
-
-def h_misplaced(s):
+def h_misplaced(s, goal):
     return sum(1 for i in range(9) if s[i] != 0 and s[i] != goal[i])
 
-def h_manhattan(s):
+def h_manhattan(s, goal):
     d = 0
     for i in range(9):
         if s[i] != 0:
@@ -28,12 +25,12 @@ def get_neighbors(s):
             res.append(tuple(lst))
     return res
 
-def a_star(mode="misplaced"):
-    h_func = h_misplaced if mode == "misplaced" else h_manhattan
-    pq = [(h_func(initial), 0, initial, [])]
+def a_star(initial, goal, mode):
+    h_func = h_misplaced if mode == 1 else h_manhattan
+    pq = [(h_func(initial, goal), 0, initial)]
     visited = set()
     while pq:
-        f, g, cur, path = heapq.heappop(pq)
+        f, g, cur = heapq.heappop(pq)
         if cur in visited:
             continue
         visited.add(cur)
@@ -41,10 +38,14 @@ def a_star(mode="misplaced"):
             return g, len(visited)
         for nxt in get_neighbors(cur):
             if nxt not in visited:
-                heapq.heappush(pq, (g + 1 + h_func(nxt), g + 1, nxt, path + [nxt]))
+                heapq.heappush(pq, (g + 1 + h_func(nxt, goal), g + 1, nxt))
+    return -1, len(visited)
 
-cost1, visited1 = a_star("misplaced")
-cost2, visited2 = a_star("manhattan")
+initial = tuple(map(int, input("Enter initial state (9 values, 0 for blank): ").split()))
+goal = tuple(map(int, input("Enter goal state (9 values, 0 for blank): ").split()))
 
-print(f"A* (Misplaced Tiles)    -> Cost: {cost1}, States Explored: {visited1}")
-print(f"A* (Manhattan Distance) -> Cost: {cost2}, States Explored: {visited2}")
+cost1, vis1 = a_star(initial, goal, 1)
+cost2, vis2 = a_star(initial, goal, 2)
+
+print(f"\nA* (Misplaced Tiles)    -> Cost: {cost1}, States Explored: {vis1}")
+print(f"A* (Manhattan Distance) -> Cost: {cost2}, States Explored: {vis2}")
