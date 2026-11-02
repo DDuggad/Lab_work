@@ -1,9 +1,8 @@
-initial = [3, 1, 2, 0]
-
 def cost(s):
     c = 0
-    for i in range(len(s)):
-        for j in range(i + 1, len(s)):
+    n = len(s)
+    for i in range(n):
+        for j in range(i + 1, n):
             if s[i] == s[j] or abs(s[i] - s[j]) == abs(i - j):
                 c += 1
     return c
@@ -12,7 +11,7 @@ def hill_climbing(state):
     cur = list(state)
     n = len(cur)
     step = 0
-    print(f"Step {step}: State = {cur}, Cost = {cost(cur)}")
+    print(f"\nStep {step}: State = {cur}, Cost = {cost(cur)}")
     while True:
         best_state = None
         best_cost = cost(cur)
@@ -34,5 +33,6 @@ def hill_climbing(state):
         print(f"Step {step}: State = {cur}, Cost = {cost(cur)}")
     return cur
 
+initial = list(map(int, input("Enter initial queen positions (row per column): ").split()))
 final_state = hill_climbing(initial)
-print(f"Result: {final_state} with Cost {cost(final_state)}")
+print(f"\nFinal State: {final_state} with Cost {cost(final_state)}")
