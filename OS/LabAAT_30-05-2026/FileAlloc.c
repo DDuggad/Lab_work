@@ -2,10 +2,18 @@
 
 int disk[50] = {0};
 
+void clear_buffer() {
+    while (getchar() != '\n');
+}
+
 void sequential() {
     int st, len, i, flag = 0;
     printf("\nEnter start block and length: ");
-    scanf("%d %d", &st, &len);
+    if (scanf("%d %d", &st, &len) != 2) {
+        clear_buffer();
+        printf("Invalid input. Numbers only.\n");
+        return;
+    }
     
     for (i = st; i < st + len; i++) {
         if (disk[i] == 1) { flag = 1; break; }
@@ -26,7 +34,7 @@ void sequential() {
 void indexed() {
     int ind, len, i, blocks[20], flag = 0;
     printf("\nEnter index block: ");
-    scanf("%d", &ind);
+    if (scanf("%d", &ind) != 1) { clear_buffer(); return; }
     
     if (disk[ind] == 1) {
         printf("Index block is already allocated.\n");
@@ -34,10 +42,15 @@ void indexed() {
     }
     
     printf("Enter file length: ");
-    scanf("%d", &len);
+    if (scanf("%d", &len) != 1) { clear_buffer(); return; }
+    
     printf("Enter %d blocks: ", len);
     for (i = 0; i < len; i++) {
-        scanf("%d", &blocks[i]);
+        if (scanf("%d", &blocks[i]) != 1) {
+            clear_buffer();
+            printf("Invalid input. Numbers only.\n");
+            return;
+        }
         if (disk[blocks[i]] == 1) flag = 1;
     }
     
@@ -57,7 +70,11 @@ void indexed() {
 void linked() {
     int st, len, i, count = 0;
     printf("\nEnter start block and length: ");
-    scanf("%d %d", &st, &len);
+    if (scanf("%d %d", &st, &len) != 2) {
+        clear_buffer();
+        printf("Invalid input. Numbers only.\n");
+        return;
+    }
     
     if (disk[st] == 1) {
         printf("Start block is already allocated.\n");
@@ -86,7 +103,11 @@ int main() {
         printf("\n--- File Allocation Strategies ---\n");
         printf("1. Sequential  2. Indexed  3. Linked  4. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &ch);
+        if (scanf("%d", &ch) != 1) {
+            clear_buffer();
+            printf("Invalid choice!\n");
+            continue;
+        }
         
         switch (ch) {
             case 1: sequential(); break;

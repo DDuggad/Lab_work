@@ -16,6 +16,23 @@ client/build/
 .env.test.local
 .env.production.local
 
+# Compiled binaries & objects
+*.exe
+*.o
+*.obj
+*.out
+*.class
+
+# Code::Blocks & C build folders
+bin/
+obj/
+*.layout
+*.depend
+
+# Windows folder config
+desktop.ini
+Desktop.ini
+
 # Logs
 logs/
 *.log
@@ -72,10 +89,28 @@ jspm_packages/
 ehthumbs.db
 Thumbs.db
 
+# Compiled binaries & objects
+*.exe
+*.o
+*.obj
+*.out
+*.class
+
+# Code::Blocks & C/C++ build folders & session files
+bin/
+obj/
+*.layout
+*.depend
+
+# Python cache
+__pycache__/
+*.py[cod]
+
 # Windows
 Thumbs.db
 ehthumbs.db
-Desktop.ini
+[Dd]esktop.ini
+desktop.ini
 
 # Temporary files
 temp/
